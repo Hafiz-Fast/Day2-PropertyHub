@@ -1,4 +1,4 @@
-<div class="min-h-screen bg-gray-100 flex items-center justify-center">
+<div data-controller = "hello" class="min-h-screen bg-gray-100 flex items-center justify-center">
   <div class="bg-white rounded-xl shadow-xl p-8 w-[500px]">
     <h1 class="text-4xl font-bold text-blue-600">
       PropertyHub
@@ -9,7 +9,7 @@
     </p>
 
     <button
-      id="explore-btn"
+      data-action="click->hello#greet"
       class="mt-6 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg">
       Explore Properties
     </button>
