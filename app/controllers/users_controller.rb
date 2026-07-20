@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+    include RequestLogger
+
     def index
         @users = User.all
     end

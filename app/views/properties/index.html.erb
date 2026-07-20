@@ -12,11 +12,11 @@
           </h2>
 
           <p class="text-gray-600 mt-2">
-            <strong>Location:</strong> <%= property.location %>
+            <strong>Location:</strong> <%= property_location(property) %>
           </p>
 
           <p class="text-green-600 font-bold mt-1">
-             PKR <%= number_with_delimiter(property.price) %>
+             <%= formatted_price(property) %>
           </p>
         </div>
       <% end %>

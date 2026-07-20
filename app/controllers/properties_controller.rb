@@ -1,4 +1,6 @@
 class PropertiesController < ApplicationController
+    include RequestLogger
+
     def index
         @properties = Property.all
 
@@ -9,9 +11,9 @@ class PropertiesController < ApplicationController
     end
 
     def create
-        @property = Property.new(property_params)
+        @property = PropertyCreationService.new(property_params).call
 
-        if @property.save
+        if @property.persisted?
             redirect_to @property
         else
             render :new, status: :unprocessable_entity

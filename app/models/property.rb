@@ -1,4 +1,6 @@
 class Property < ApplicationRecord
+    include Titleizable
+
     belongs_to :users
 
     validates :title, presence: true, length: { minimum: 5 }
