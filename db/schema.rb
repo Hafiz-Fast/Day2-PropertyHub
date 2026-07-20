@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_17_140738) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_17_172357) do
   create_table "properties", force: :cascade do |t|
     t.integer "bedrooms"
     t.datetime "created_at", null: false
@@ -21,9 +21,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_17_140738) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "admin"
     t.integer "age"
     t.datetime "created_at", null: false
+    t.string "email"
     t.string "name"
+    t.string "password"
     t.datetime "updated_at", null: false
   end
 end

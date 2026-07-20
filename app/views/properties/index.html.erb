@@ -1,0 +1,31 @@
+<div class="max-w-4xl mx-auto mt-10 px-6">
+  <h1 class="text-4xl font-bold text-blue-600 mb-8">
+    Properties
+  </h1>
+
+  <% if @properties.any? %>
+    <div class="space-y-4">
+      <% @properties.each do |property| %>
+        <div class="bg-white shadow-md rounded-lg p-5 border">
+          <h2 class="text-2xl font-semibold text-gray-800">
+            <%= property.title %>
+          </h2>
+
+          <p class="text-gray-600 mt-2">
+            <strong>Location:</strong> <%= property.location %>
+          </p>
+
+          <p class="text-green-600 font-bold mt-1">
+             PKR <%= number_with_delimiter(property.price) %>
+          </p>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="bg-yellow-100 border border-yellow-300 rounded-lg p-6 text-center">
+      <p class="text-yellow-800 text-lg">
+        No properties available.
+      </p>
+    </div>
+  <% end %>
+</div>
