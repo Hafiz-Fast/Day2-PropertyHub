@@ -21,7 +21,13 @@ class PropertiesController < ApplicationController
     end
 
     def search
-        render plain: "Search Page"
+        @properties = Property.where(city: params[:city])
+    end
+
+    def favorite
+        @property = Property.find(params[:id])
+
+        # Favorite this property
     end
 
   private

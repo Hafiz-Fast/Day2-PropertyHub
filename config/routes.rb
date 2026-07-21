@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
-  root "home#index"
+  root "properties#index"
 
-  resources :properties
+  resources :properties do
+    # member route applies to a single record
+    member do
+      post: favourite
+    end
+
+    collection do
+      get: search
+    end
+  end
 
   # Custom Routes: Use when they do not much the 7 actions under the resources
   get "properties/search", to: "properties#search"
