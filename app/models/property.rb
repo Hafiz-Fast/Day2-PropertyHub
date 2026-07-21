@@ -1,4 +1,15 @@
 class Property < ApplicationRecord
+    # Scopes are defined Console Database Queries
+    scope :available, -> { where(status: "available") }
+    scope :id_exists, -> { where(id in [1, 3, 5]) }
+    scope :cheap, -> { where(price: ..500000) }
+    scope :recent, -> { order(created_at: :desc) }
+
+    # Property.where(city: "Lahore") can be translated to Property.in_city("Lahore")
+    scope :in_city, -> (city) {
+        where(city: city)
+    }
+
     include Titleizable
 
     belongs_to :user
