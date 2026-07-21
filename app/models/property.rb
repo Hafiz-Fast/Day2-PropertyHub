@@ -1,7 +1,8 @@
 class Property < ApplicationRecord
     include Titleizable
 
-    belongs_to :users
+    belongs_to :user
+    has_many :reviews, dependent: :destroy
 
     validates :title, presence: true, length: { minimum: 5 }
     validates :location, presence: true

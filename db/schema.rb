@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_17_172357) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_21_142426) do
   create_table "properties", force: :cascade do |t|
     t.integer "bedrooms"
     t.datetime "created_at", null: false
@@ -18,6 +18,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_17_172357) do
     t.integer "price"
     t.string "title"
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_properties_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.integer "property_id", null: false
+    t.integer "rating"
+    t.datetime "updated_at", null: false
+    t.index ["property_id"], name: "index_reviews_on_property_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -29,4 +40,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_17_172357) do
     t.string "password"
     t.datetime "updated_at", null: false
   end
+
+  add_foreign_key "properties", "users"
+  add_foreign_key "reviews", "properties"
 end
