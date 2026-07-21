@@ -1,4 +1,11 @@
 class Property < ApplicationRecord
+    # Enums
+    enum :status, {
+        available: 0,
+        sold: 1,
+        pending: 2
+    }
+
     # Scopes are defined Console Database Queries
     scope :available, -> { where(status: "available") }
     scope :id_exists, -> { where(id in [1, 3, 5]) }
