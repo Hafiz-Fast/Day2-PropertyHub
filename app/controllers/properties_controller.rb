@@ -20,6 +20,10 @@ class PropertiesController < ApplicationController
         end
     end
 
+    def search
+        render plain: "Search Page"
+    end
+
   private
 
   def property_params
