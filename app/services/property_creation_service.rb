@@ -1,19 +1,13 @@
 class PropertyCreationService
-  def initialize(params)
+  def initialize(params, user)
     @params = params
+    @user = user
   end
 
   def call
     property = Property.new(@params)
-
-    if property.save
-      puts "Property Created Successfully"
-
-      # Future work:
-      # Send Email
-      # Notify Admin
-      # Create Audit Log
-    end
+    property.user = @user
+    property.save
 
     return property
   end

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     collection do
       get :search
     end
+    resources :reviews, only: [:create, :destroy]
   end
 
   # Custom Routes: Use when they do not much the 7 actions under the resources

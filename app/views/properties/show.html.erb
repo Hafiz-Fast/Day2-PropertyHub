@@ -1,0 +1,42 @@
+<% content_for :title do %>
+  <%= @property.title %>
+<% end %>
+
+<div class="max-w-3xl mx-auto mt-8 bg-white p-8 rounded shadow">
+  <h1 class="text-3xl font-bold"><%= @property.title %></h1>
+  <p class="text-gray-600 mt-2"><strong>Location:</strong> <%= @property.location %></p>
+  <p class="text-green-600 font-bold mt-2"><%= number_to_currency(@property.price) %></p>
+
+  <div class="mt-4">
+    <%= link_to "Edit", edit_property_path(@property), class: "mr-3 text-blue-600" %>
+    <%= link_to "Back to list", properties_path, class: "text-gray-600" %>
+  </div>
+
+  <hr class="my-6">
+
+  <h2 class="text-xl font-semibold mb-3">Reviews</h2>
+  <div class="space-y-4">
+    <% @property.reviews.each do |review| %>
+      <div class="border rounded p-3">
+        <p class="font-semibold"><%= "Anonymous" %> — <%= review.rating %>/5</p>
+        <p class="mt-1"><%= review.comment %></p>
+          <%= button_to "Delete", property_review_path(@property, review), method: :delete, data: { confirm: "Delete?" }, class: "text-red-600 mt-2 bg-transparent" %>
+      </div>
+    <% end %>
+  </div>
+
+    <div class="mt-6">
+      <h3 class="font-semibold mb-2">Add review</h3>
+      <%= form_with model: [@property, Review.new] do |f| %>
+        <div class="mb-2">
+          <%= f.label :rating, nil, class: "block mb-1" %>
+          <%= f.number_field :rating, in: 1..5, class: "w-24 border rounded p-2" %>
+        </div>
+        <div class="mb-4">
+          <%= f.label :comment, nil, class: "block mb-1" %>
+          <%= f.text_area :comment, class: "w-full border rounded p-2" %>
+        </div>
+        <%= f.submit "Add Review", class: "bg-blue-600 text-white px-4 py-2 rounded" %>
+      <% end %>
+    </div>
+</div>

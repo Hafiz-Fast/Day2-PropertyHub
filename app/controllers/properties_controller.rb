@@ -1,6 +1,8 @@
 class PropertiesController < ApplicationController
     include RequestLogger
 
+    before_action :set_property, only: %i[show edit update destroy favorite]
+
     def index
         @properties = Property.all
 
@@ -10,8 +12,13 @@ class PropertiesController < ApplicationController
         end
     end
 
+    def new
+        @property = Property.new
+    end
+
     def create
-        @property = PropertyCreationService.new(property_params).call
+        @property = PropertyCreationService.new(property_params, User.first).call
+        @property.user = User.first
 
         if @property.persisted?
             redirect_to @property
@@ -21,7 +28,7 @@ class PropertiesController < ApplicationController
     end
 
     def search
-        @properties = Property.where(city: params[:city])
+        @properties = Property.where(location: params[:location])
     end
 
     def favorite
@@ -30,9 +37,32 @@ class PropertiesController < ApplicationController
         # Favorite this property
     end
 
+    def show
+    end
+
+    def edit
+    end
+
+    def update
+        if @property.update(property_params)
+            redirect_to @property, notice: "Property updated"
+        else
+            render :edit, status: :unprocessable_entity
+        end
+    end
+
+    def destroy
+        @property.destroy
+        redirect_to properties_path, notice: "Property deleted"
+    end
+
   private
 
-  def property_params
-    params.require(:property).permit(:title, :price, :location)
-  end
+    def set_property
+        @property = Property.find(params[:id])
+    end
+
+    def property_params
+        params.require(:property).permit(:title, :price, :location)
+    end
 end

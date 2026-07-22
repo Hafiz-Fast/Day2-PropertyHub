@@ -1,0 +1,29 @@
+<% content_for :title do %>
+  Edit Property
+<% end %>
+
+<div class="max-w-2xl mx-auto mt-10 bg-white shadow-lg rounded-lg p-8">
+  <h1 class="text-3xl font-bold mb-6">Edit Property</h1>
+
+  <%= form_with model: @property do |form| %>
+
+    <div class="mb-4">
+      <%= form.label :title, nil, class: "block font-medium mb-2" %>
+      <%= form.text_field :title, class: "w-full border rounded-lg p-2" %>
+    </div>
+
+    <div class="mb-4">
+      <%= form.label :location, nil, class: "block font-medium mb-2" %>
+      <%= form.text_field :location, class: "w-full border rounded-lg p-2" %>
+    </div>
+
+    <div class="mb-6">
+      <%= form.label :price, nil, class: "block font-medium mb-2" %>
+      <%= form.number_field :price, class: "w-full border rounded-lg p-2" %>
+    </div>
+
+    <%= form.submit "Update Property",
+        class: "bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700 cursor-pointer" %>
+
+  <% end %>
+</div>
