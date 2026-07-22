@@ -1,14 +1,14 @@
 class Property < ApplicationRecord
     # Enums
-    enum :status, {
-        available: 0,
-        sold: 1,
-        pending: 2
-    }
+    # enum :status, {
+    #     available: 0,
+    #     sold: 1,
+    #     pending: 2
+    # }
 
     # Scopes are defined Console Database Queries
     scope :available, -> { where(status: "available") }
-    scope :id_exists, -> { where(id in [1, 3, 5]) }
+    scope :id_exists, -> { where(id: [1, 3, 5]) }
     scope :cheap, -> { where(price: ..500000) }
     scope :recent, -> { order(created_at: :desc) }
 

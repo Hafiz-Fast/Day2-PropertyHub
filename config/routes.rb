@@ -6,14 +6,14 @@ Rails.application.routes.draw do
   resources :properties do
     # member route applies to a single record
     member do
-      post: favourite
+      post :favorite
     end
 
     collection do
-      get: search
+      get :search
     end
   end
 
   # Custom Routes: Use when they do not much the 7 actions under the resources
-  get "properties/search", to: "properties#search"
+  # get "properties/search", to: "properties#search"
 end

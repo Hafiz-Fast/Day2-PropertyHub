@@ -1,0 +1,20 @@
+<div class="bg-white shadow-md rounded-lg p-5 border hover:shadow-lg transition">
+  <h2 class="text-2xl font-semibold text-gray-800">
+    <%= property.title %>
+  </h2>
+
+  <p class="text-gray-600 mt-2">
+    <strong>Location:</strong>
+    <%= property_location(property) %>
+  </p>
+
+  <p class="text-green-600 font-bold mt-2">
+    <%= formatted_price(property) %>
+  </p>
+
+  <div class="mt-4">
+    <%= link_to "View Details",
+        property_path(property),
+        class: "text-blue-600 hover:underline" %>
+  </div>
+</div>
