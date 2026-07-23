@@ -23,7 +23,14 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="app-shell flex flex-col" data-controller="theme">
+  <body
+    class="app-shell flex flex-col"
+    data-controller="theme"
+    data-theme-mode-value="light"
+    data-theme-show-badge-value="true"
+    data-theme-active-class="theme-active"
+    data-theme-inactive-class="theme-inactive"
+  >
     <%= render "shared/navbar" %>
 
     <main class="container mx-auto mt-10 px-5 flex-1">
