@@ -1,18 +1,43 @@
-<div class="max-w-4xl mx-auto mt-10 px-6">
-  <div class="mb-8 flex items-end justify-between gap-4">
+<div class="max-w-4xl mx-auto mt-10 px-6" data-controller="search" data-search-min-length-value="1" data-search-hidden-class="hidden">
+  <div class="mb-8 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
     <div>
       <p class="uppercase tracking-[0.2em] text-xs app-muted mb-2">Browse listings</p>
       <h1 class="text-4xl font-bold app-brand">
         Properties
       </h1>
     </div>
+
+    <div class="w-full lg:max-w-md app-surface rounded-2xl p-4">
+      <label for="property-search" class="block text-sm font-semibold app-muted mb-2">Search properties</label>
+      <input
+        id="property-search"
+        type="search"
+        placeholder="Search by title, location, or owner"
+        class="w-full rounded-xl border border-black/10 bg-white/80 px-4 py-3 text-base outline-none transition focus:border-black/30"
+        data-search-target="input"
+        data-action="input->search#filter"
+      >
+    </div>
   </div>
 
   <% if @properties.any? %>
     <div class="space-y-4">
       <% @properties.each do |property| %>
-        <%= render "property", property: property %>
+        <div
+          data-search-target="card"
+          data-search-title="<%= property.title %>"
+          data-search-location="<%= property_location(property) %>"
+          data-search-owner="<%= property.user.name %>"
+        >
+          <%= render "property", property: property %>
+        </div>
       <% end %>
+    </div>
+
+    <div class="app-surface rounded-2xl p-6 text-center mt-4" data-search-target="empty" hidden>
+      <p class="app-muted text-lg">
+        No properties match your search.
+      </p>
     </div>
   <% else %>
     <div class="app-surface rounded-2xl p-6 text-center">
