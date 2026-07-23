@@ -1,11 +1,16 @@
-<nav class="bg-white shadow-md">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-    <div class="flex items-center space-x-6">
-      <%= link_to "PropertyHub", root_path, class: "text-2xl font-bold text-blue-600" %>
-      <%= link_to "Home", root_path, class: "text-gray-700" %>
-      <%= link_to "Properties", properties_path, class: "text-gray-700" %>
-      <%= link_to "Add Property", new_property_path, class: "bg-white text-blue-600 px-3 py-2 rounded hover:bg-gray-100" %>
-      <%= link_to "Users", users_path, class: "text-gray-700" %>
+<nav class="app-surface sticky top-0 z-40 mx-4 mt-4 rounded-2xl">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+    <div class="flex flex-wrap items-center gap-5">
+      <%= link_to "PropertyHub", root_path, class: "text-2xl font-bold app-brand" %>
+      <%= link_to "Home", root_path, class: "app-link font-medium" %>
+      <%= link_to "Properties", properties_path, class: "app-link font-medium" %>
+      <%= link_to "Add Property", new_property_path, class: "app-button app-button-primary" %>
+      <%= link_to "Users", users_path, class: "app-link font-medium" %>
     </div>
+
+    <button type="button" class="app-button" data-action="theme#toggle">
+      <span data-theme-target="label">Dark mode</span>
+      <span class="app-muted text-sm" data-theme-target="status">Light</span>
+    </button>
   </div>
 </nav>
