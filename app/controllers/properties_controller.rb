@@ -4,7 +4,7 @@ class PropertiesController < ApplicationController
     before_action :set_property, only: %i[show edit update destroy favorite]
 
     def index
-        @properties = Property.all
+        @properties = Property.order(created_at: :asc).page(params[:page]).per(5)         # Pagination
 
         respond_to do |format|
             format.html
