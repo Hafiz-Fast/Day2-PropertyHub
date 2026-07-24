@@ -20,10 +20,18 @@ class PropertiesController < ApplicationController
         @property = PropertyCreationService.new(property_params, User.first).call
         @property.user = User.first
 
-        if @property.persisted?
-            redirect_to @property
-        else
-            render :new, status: :unprocessable_entity
+        respond_to do |format|
+            if @property.persisted?
+                format.html do
+                    redirect_to properties_path, notice: "Property created."
+                end
+
+                format.turbo_stream
+            else
+                format.html do
+                    render :new, status: :unprocessable_entity
+                end
+            end
         end
     end
 
