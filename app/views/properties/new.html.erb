@@ -2,28 +2,30 @@
   Add Property
 <% end %>
 
-<div class="max-w-2xl mx-auto mt-10 bg-white shadow-lg rounded-lg p-8">
-  <h1 class="text-3xl font-bold mb-6">Add Property</h1>
+<div class="max-w-2xl mx-auto py-6">
+  <div class="mb-7"><p class="app-eyebrow mb-2">New listing</p><h1 class="text-3xl font-bold tracking-tight">List your property</h1><p class="app-muted mt-2">Share the essential details so prospective buyers can evaluate it quickly.</p></div>
+  <div class="app-surface app-card sm:p-8">
+  <% if @property.errors.any? %><div class="app-error mb-6"><p class="font-semibold">Please correct the following:</p><ul class="mt-2 list-disc pl-5"><% @property.errors.full_messages.each do |message| %><li><%= message %></li><% end %></ul></div><% end %>
 
   <%= form_with model: @property do |form| %>
 
     <div class="mb-4">
-      <%= form.label :title, nil, class: "block font-medium mb-2" %>
-      <%= form.text_field :title, class: "w-full border rounded-lg p-2" %>
+      <%= form.label :title, "Property title", class: "app-label" %>
+      <%= form.text_field :title, class: "app-input", placeholder: "e.g. Modern family home in DHA" %>
     </div>
 
     <div class="mb-4">
-      <%= form.label :location, nil, class: "block font-medium mb-2" %>
-      <%= form.text_field :location, class: "w-full border rounded-lg p-2" %>
+      <%= form.label :location, class: "app-label" %>
+      <%= form.text_field :location, class: "app-input", placeholder: "City or neighborhood" %>
     </div>
 
     <div class="mb-6">
-      <%= form.label :price, nil, class: "block font-medium mb-2" %>
-      <%= form.number_field :price, class: "w-full border rounded-lg p-2" %>
+      <%= form.label :price, "Price (PKR)", class: "app-label" %>
+      <%= form.number_field :price, class: "app-input", placeholder: "e.g. 25000000" %>
     </div>
 
     <%= form.submit "Create Property",
-        class: "bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700 cursor-pointer" %>
+        class: "app-button app-button-primary cursor-pointer" %>
 
   <% end %>
-</div>
+  </div></div>

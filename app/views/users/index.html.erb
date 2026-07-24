@@ -1,16 +1,15 @@
-<div class="max-w-4xl mx-auto mt-10 px-6">
-  <h1 class="text-3xl font-bold mb-6">Users</h1>
+<div class="max-w-4xl mx-auto py-4"><p class="app-eyebrow mb-2">PropertyHub community</p><h1 class="text-3xl font-bold tracking-tight mb-6">People behind the listings</h1>
 
   <% if @users.any? %>
     <ul class="space-y-3">
       <% @users.each do |user| %>
-        <li class="bg-white p-4 rounded shadow">
+        <li class="app-surface app-card app-card-hover flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
           <%= link_to user.name, user_path(user), class: "text-blue-600 font-semibold" %>
-          <span class="text-gray-600 ml-3"><%= user.email %></span>
+          <span class="app-muted text-sm"><%= user.email %></span>
         </li>
       <% end %>
     </ul>
   <% else %>
-    <p>No users yet.</p>
+    <div class="app-surface rounded-2xl p-6 text-center app-muted">No community members yet.</div>
   <% end %>
 </div>

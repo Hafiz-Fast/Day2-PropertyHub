@@ -1,10 +1,9 @@
-<div class="max-w-4xl mx-auto mt-10 px-6" data-controller="search" data-search-min-length-value="1" data-search-hidden-class="hidden">
+<div class="max-w-5xl mx-auto py-4" data-controller="search" data-search-min-length-value="1" data-search-hidden-class="hidden">
   <div class="mb-8 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-    <div class="mb-7">
-      <p class="uppercase tracking-[0.2em] text-xs app-muted mb-2">Browse listings</p>
-      <h1 class="text-4xl font-bold app-brand">
-        Properties
-      </h1>
+    <div>
+      <p class="app-eyebrow mb-2">Browse listings</p>
+      <h1 class="text-4xl font-bold tracking-tight">Find your next <span class="app-brand">property.</span></h1>
+      <p class="app-muted mt-3">Explore homes shared by the PropertyHub community.</p>
     </div>
 
     <div class="w-full lg:max-w-md app-surface rounded-2xl p-4">
@@ -13,7 +12,7 @@
         id="property-search"
         type="search"
         placeholder="Search by title, location, or owner"
-        class="w-full rounded-xl border border-black/10 bg-white/80 px-4 py-3 text-base outline-none transition focus:border-black/30"
+        class="app-input"
         data-search-target="input"
         data-action="input->search#filter"
       >

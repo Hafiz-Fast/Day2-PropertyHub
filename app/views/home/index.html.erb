@@ -1,21 +1,11 @@
-<%= image_tag "house.png", class: "w-32 mx-auto mb-4" %>
-
-<div data-controller = "hello" class="min-h-screen bg-gray-100 flex items-center justify-center">
-  <div class="bg-white rounded-xl shadow-xl p-8 w-[500px]">
-    <h1 class="text-4xl font-bold text-blue-600">
-      PropertyHub
-    </h1>
-
-    <p class="mt-4 text-gray-600"
-       data-hello-target="message"
-    >
-      Find your dream property with Ruby on Rails.
-    </p>
-
-    <button
-      data-action="click->hello#greet"
-      class="mt-6 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg">
-      Explore Properties
-    </button>
-  </div>
+<div data-controller="hello" class="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center py-8 sm:py-14">
+  <section>
+    <p class="app-eyebrow mb-4">Pakistan property discovery</p>
+    <h1 class="max-w-3xl text-4xl font-bold tracking-tight sm:text-6xl">Find a place that feels <span class="app-brand">like home.</span></h1>
+    <p class="app-muted mt-6 max-w-xl text-lg leading-8" data-hello-target="message">Explore well-presented listings, compare locations, and connect with the people behind each property.</p>
+    <div class="mt-8 flex flex-wrap gap-3"><%= link_to "Explore properties", properties_path, class: "app-button app-button-primary" %><%= link_to "List a property", new_property_path, class: "app-button" %></div>
+    <div class="mt-10 flex gap-8"><div><p class="text-2xl font-bold">Simple</p><p class="app-muted text-sm">to browse</p></div><div><p class="text-2xl font-bold">Clear</p><p class="app-muted text-sm">price details</p></div><div><p class="text-2xl font-bold">Local</p><p class="app-muted text-sm">community</p></div></div>
+  </section>
+  <aside class="app-surface app-card overflow-hidden p-0"><div class="bg-gradient-to-br from-blue-600 via-blue-500 to-sky-400 p-8 text-white sm:p-10"><p class="text-sm font-semibold tracking-wide text-blue-100">PROPERTYHUB</p><p class="mt-16 text-3xl font-semibold leading-tight">Your next move starts with a better search.</p></div><div class="p-6 sm:p-8"><p class="app-eyebrow">Ready when you are</p><p class="app-muted mt-2">Browse the latest homes and see the details that matter.</p><%= link_to "View all listings →", properties_path, class: "app-link mt-5 inline-block font-semibold" %></div></aside>
+</div>
 </div>

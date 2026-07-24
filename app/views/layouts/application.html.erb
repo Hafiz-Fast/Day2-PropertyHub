@@ -33,7 +33,13 @@
   >
     <%= render "shared/navbar" %>
 
-    <main class="container mx-auto mt-10 px-5 flex-1">
+    <main class="w-full max-w-6xl mx-auto mt-8 px-5 sm:px-6 flex-1">
+      <% if notice.present? %>
+        <div class="app-notice mb-6" role="status"><%= notice %></div>
+      <% end %>
+      <% if alert.present? %>
+        <div class="app-error mb-6" role="alert"><%= alert %></div>
+      <% end %>
       <%= yield %>
     </main>
 

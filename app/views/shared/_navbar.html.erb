@@ -1,16 +1,17 @@
-<nav class="app-surface sticky top-0 z-40 mx-4 mt-4 rounded-2xl">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-    <div class="flex flex-wrap items-center gap-5">
-      <%= link_to "PropertyHub", root_path, class: "text-2xl font-bold app-brand" %>
-      <%= link_to "Home", root_path, class: "app-link font-medium" %>
-      <%= link_to "Properties", properties_path, class: "app-link font-medium" %>
-      <%= link_to "Add Property", new_property_path, class: "app-button app-button-primary" %>
-      <%= link_to "Users", users_path, class: "app-link font-medium" %>
+<nav class="app-surface sticky top-3 z-40 mx-3 sm:mx-4 mt-3 rounded-2xl">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+    <div class="flex flex-wrap items-center gap-x-5 gap-y-3">
+      <%= link_to root_path, class: "flex items-center gap-2 text-xl font-bold app-brand" do %>
+        <span class="inline-grid size-8 place-items-center rounded-xl bg-blue-600 text-sm text-white">PH</span>
+        PropertyHub
+      <% end %>
+      <%= link_to "Properties", properties_path, class: "app-link text-sm font-semibold" %>
+      <%= link_to "Users", users_path, class: "app-link text-sm font-semibold" %>
     </div>
 
-    <button type="button" class="app-button" data-action="theme#toggle">
-      <span data-theme-target="label">Dark mode</span>
-      <span class="app-muted text-sm" data-theme-target="status">Light</span>
-    </button>
+    <div class="flex items-center gap-3">
+      <%= link_to "List a property", new_property_path, class: "app-button app-button-primary text-sm" %>
+      <button type="button" class="app-button text-sm" data-action="theme#toggle" aria-label="Toggle color theme"><span data-theme-target="label">Dark mode</span></button>
+    </div>
   </div>
 </nav>

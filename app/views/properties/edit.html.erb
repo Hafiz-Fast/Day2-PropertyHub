@@ -2,28 +2,28 @@
   Edit Property
 <% end %>
 
-<div class="max-w-2xl mx-auto mt-10 bg-white shadow-lg rounded-lg p-8">
-  <h1 class="text-3xl font-bold mb-6">Edit Property</h1>
+<div class="max-w-2xl mx-auto py-6"><div class="mb-7"><p class="app-eyebrow mb-2">Manage listing</p><h1 class="text-3xl font-bold tracking-tight">Edit property</h1></div><div class="app-surface app-card sm:p-8">
+  <% if @property.errors.any? %><div class="app-error mb-6"><% @property.errors.full_messages.each do |message| %><p><%= message %></p><% end %></div><% end %>
 
   <%= form_with model: @property do |form| %>
 
     <div class="mb-4">
-      <%= form.label :title, nil, class: "block font-medium mb-2" %>
-      <%= form.text_field :title, class: "w-full border rounded-lg p-2" %>
+      <%= form.label :title, "Property title", class: "app-label" %>
+      <%= form.text_field :title, class: "app-input" %>
     </div>
 
     <div class="mb-4">
-      <%= form.label :location, nil, class: "block font-medium mb-2" %>
-      <%= form.text_field :location, class: "w-full border rounded-lg p-2" %>
+      <%= form.label :location, class: "app-label" %>
+      <%= form.text_field :location, class: "app-input" %>
     </div>
 
     <div class="mb-6">
-      <%= form.label :price, nil, class: "block font-medium mb-2" %>
-      <%= form.number_field :price, class: "w-full border rounded-lg p-2" %>
+      <%= form.label :price, "Price (PKR)", class: "app-label" %>
+      <%= form.number_field :price, class: "app-input" %>
     </div>
 
     <%= form.submit "Update Property",
-        class: "bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700 cursor-pointer" %>
+        class: "app-button app-button-primary cursor-pointer" %>
 
   <% end %>
-</div>
+</div></div>
