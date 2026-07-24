@@ -9,7 +9,7 @@
       <p class="text-2xl font-bold app-brand whitespace-nowrap"><%= formatted_price(@property) %></p>
     </div>
     <div class="mt-7 grid gap-4 border-y py-5 sm:grid-cols-2" style="border-color: var(--app-border)"><div><p class="app-eyebrow">Bedrooms</p><p class="mt-1 font-semibold"><%= @property.bedrooms.presence || "Not listed" %></p></div><div><p class="app-eyebrow">Published</p><p class="mt-1 font-semibold"><%= time_ago_in_words(@property.created_at) %> ago</p></div></div>
-    <div class="mt-6 flex flex-wrap gap-3"><%= link_to "Edit listing", edit_property_path(@property), class: "app-button app-button-primary" %><%= button_to "Delete listing", @property, method: :delete, data: { turbo_confirm: "Delete this property listing?" }, class: "app-button text-red-600" %></div>
+    <div class="mt-6 flex flex-wrap gap-3"><%= button_to favorite_property_path(@property), method: :post, class: "app-button #{'app-button-primary' if favorited_property?(@property)}" do %><%= favorited_property?(@property) ? "♥ Saved" : "♡ Save property" %><% end %><%= link_to "Edit listing", edit_property_path(@property), class: "app-button app-button-primary" %><%= button_to "Delete listing", @property, method: :delete, data: { turbo_confirm: "Delete this property listing?" }, class: "app-button text-red-600" %></div>
   </article>
 
   <section class="mt-8"><div class="flex items-center justify-between"><div><p class="app-eyebrow mb-1">Feedback</p><h2 class="text-2xl font-bold">Reviews</h2></div><span class="app-muted text-sm"><%= @property.reviews.count %> total</span></div>

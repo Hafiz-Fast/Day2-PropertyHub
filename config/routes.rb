@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
     collection do
       get :search
+      get :favorites
     end
     resources :reviews, only: [:create, :destroy]
   end

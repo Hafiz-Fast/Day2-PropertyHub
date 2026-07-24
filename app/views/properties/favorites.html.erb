@@ -1,0 +1,28 @@
+<% content_for :title, "Favorite Properties" %>
+
+<div class="max-w-5xl mx-auto py-4">
+  <div class="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+    <div>
+      <p class="app-eyebrow mb-2">Your shortlist</p>
+      <h1 class="text-4xl font-bold tracking-tight">Favorite <span class="app-brand">properties</span></h1>
+      <p class="app-muted mt-3">Keep the listings you want to revisit in one place.</p>
+    </div>
+    <%= link_to "Browse all properties", properties_path, class: "app-button" %>
+  </div>
+
+  <% if @properties.any? %>
+    <div class="mt-8 space-y-4">
+      <% @properties.each do |property| %>
+        <%= render "property", property: property %>
+      <% end %>
+    </div>
+    <%= paginate @properties %>
+  <% else %>
+    <div class="app-surface rounded-2xl mt-8 p-8 text-center sm:p-12">
+      <div class="mx-auto grid size-14 place-items-center rounded-2xl bg-blue-50 text-2xl text-blue-600">♡</div>
+      <h2 class="mt-5 text-2xl font-bold">Your shortlist is empty</h2>
+      <p class="app-muted mx-auto mt-2 max-w-md">Save the properties that catch your eye, then return here whenever you are ready to compare them.</p>
+      <%= link_to "Explore properties", properties_path, class: "app-button app-button-primary mt-6" %>
+    </div>
+  <% end %>
+</div>

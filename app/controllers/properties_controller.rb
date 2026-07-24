@@ -5,6 +5,7 @@ class PropertiesController < ApplicationController
 
     def index
         @properties = Property.includes(:user).order(created_at: :asc).page(params[:page]).per(5)         # Pagination
+        load_favorite_property_ids
 
         respond_to do |format|
             format.html
@@ -40,12 +41,26 @@ class PropertiesController < ApplicationController
     end
 
     def favorite
-        @property = Property.find(params[:id])
+        user = User.first
 
-        # Favorite this property
+        if user.favorites.exists?(property: @property)
+            user.favorites.find_by(property: @property)&.destroy
+            notice = "Removed from favorites."
+        else
+            user.favorites.create(property: @property)
+            notice = "Added to favorites."
+        end
+
+        redirect_back fallback_location: properties_path, notice: notice
+    end
+
+    def favorites
+        @properties = User.first.favorite_properties.includes(:user).order(created_at: :desc).page(params[:page]).per(10)
+        @favorite_property_ids = @properties.map(&:id)
     end
 
     def show
+        @favorite_property_ids = User.first.favorites.where(property: @property).pluck(:property_id)
     end
 
     def edit
@@ -71,6 +86,10 @@ class PropertiesController < ApplicationController
     end
 
     def property_params
-        params.require(:property).permit(:title, :price, :location)
+      params.require(:property).permit(:title, :price, :location)
+    end
+
+    def load_favorite_property_ids
+        @favorite_property_ids = User.first.favorite_properties.where(id: @properties.select(:id)).pluck(:id)
     end
 end

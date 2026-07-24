@@ -38,6 +38,9 @@
       </div>
 
       <div class="mt-5 flex flex-wrap items-center gap-3">
+        <%= button_to favorite_property_path(property), method: :post, class: "app-button #{'app-button-primary' if favorited_property?(property)}", form: { data: { turbo_frame: "_top" } } do %>
+          <%= favorited_property?(property) ? "♥ Saved" : "♡ Save property" %>
+        <% end %>
         <%= link_to "Open full listing", property_path(property), class: "app-button app-button-primary", data: { turbo_frame: "_top" } %>
         <span class="app-muted text-sm">View reviews and manage this listing.</span>
       </div>

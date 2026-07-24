@@ -6,4 +6,8 @@ module PropertiesHelper
   def property_location(property)
     "#{property.location}"
   end
+
+  def favorited_property?(property)
+    @favorite_property_ids&.include?(property.id)
+  end
 end
