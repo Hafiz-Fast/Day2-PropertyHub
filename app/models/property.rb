@@ -22,6 +22,9 @@ class Property < ApplicationRecord
     belongs_to :user
     has_many :reviews, dependent: :destroy
 
+    has_many :favorites, dependent: :destroy
+    has_many :users, through: :favorites
+
     validates :title, presence: true, length: { minimum: 5 }
     validates :location, presence: true
     validates :price,
