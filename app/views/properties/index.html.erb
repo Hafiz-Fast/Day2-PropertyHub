@@ -1,6 +1,6 @@
 <div class="max-w-4xl mx-auto mt-10 px-6" data-controller="search" data-search-min-length-value="1" data-search-hidden-class="hidden">
   <div class="mb-8 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-    <div>
+    <div class="mb-7">
       <p class="uppercase tracking-[0.2em] text-xs app-muted mb-2">Browse listings</p>
       <h1 class="text-4xl font-bold app-brand">
         Properties
@@ -20,32 +20,36 @@
     </div>
   </div>
 
-  <% if @properties.any? %>
-    <div class="space-y-4">
-      <% @properties.each do |property| %>
-        <div
-          data-search-target="card"
-          data-search-title="<%= property.title %>"
-          data-search-location="<%= property_location(property) %>"
-          data-search-owner="<%= property.user.name %>"
-        >
-          <%= render "property", property: property %>
-        </div>
-      <% end %>
-    </div>
+  <%= turbo_frame_tag "properties" do %>
 
-    <div class="app-surface rounded-2xl p-6 text-center mt-4" data-search-target="empty" hidden>
-      <p class="app-muted text-lg">
-        No properties match your search.
-      </p>
-    </div>
-  <% else %>
-    <div class="app-surface rounded-2xl p-6 text-center">
-      <p class="app-muted text-lg">
-        No properties available.
-      </p>
-    </div>
+    <% if @properties.any? %>
+      <div class="space-y-4">
+        <% @properties.each do |property| %>
+          <div
+            data-search-target="card"
+            data-search-title="<%= property.title %>"
+            data-search-location="<%= property_location(property) %>"
+            data-search-owner="<%= property.user.name %>"
+          >
+            <%= render "property", property: property %>
+          </div>
+        <% end %>
+      </div>
+
+      <%= paginate @properties %>
+
+      <div class="app-surface rounded-2xl p-6 text-center mt-4" data-search-target="empty" hidden>
+        <p class="app-muted text-lg">
+          No properties match your search.
+        </p>
+      </div>
+    <% else %>
+      <div class="app-surface rounded-2xl p-6 text-center">
+        <p class="app-muted text-lg">
+          No properties available.
+        </p>
+      </div>
+    <% end %>
+
   <% end %>
 </div>
-
-<%= paginate @properties %>
