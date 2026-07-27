@@ -1,0 +1,32 @@
+<% content_for :title, "Log in" %>
+
+<div class="max-w-md mx-auto py-12">
+  <div class="app-surface app-card sm:p-8">
+    <p class="app-eyebrow mb-2">Welcome back</p>
+    <h1 class="text-3xl font-bold mb-2">Log in</h1>
+    <p class="app-muted mb-6">Access your PropertyHub account.</p>
+
+    <%= form_with scope: resource_name, url: session_path(resource_name) do |f| %>
+      <div class="mb-4">
+        <%= f.label :email, class: "app-label" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "app-input" %>
+      </div>
+
+      <div class="mb-4">
+        <%= f.label :password, class: "app-label" %>
+        <%= f.password_field :password, autocomplete: "current-password", class: "app-input" %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <label class="flex items-center gap-2 mb-6 app-muted text-sm">
+          <%= f.check_box :remember_me %>
+          Remember me
+        </label>
+      <% end %>
+
+      <%= f.submit "Log in", class: "app-button app-button-primary cursor-pointer" %>
+    <% end %>
+
+    <p class="app-muted mt-6 text-sm">New to PropertyHub? <%= link_to "Create an account", new_user_registration_path, class: "app-link font-semibold" %>.</p>
+  </div>
+</div>

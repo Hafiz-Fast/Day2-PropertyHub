@@ -7,7 +7,9 @@
   <p class="app-muted mt-2"><%= @user.email %></p>
 
   <div class="mt-6">
-    <%= link_to "Edit profile", edit_user_path(@user), class: "app-button app-button-primary" %>
+    <% if current_user == @user %>
+      <%= link_to "Edit my account", edit_user_registration_path, class: "app-button app-button-primary" %>
+    <% end %>
     <%= link_to "Back to community", users_path, class: "app-link ml-3 font-semibold" %>
   </div>
 </div>

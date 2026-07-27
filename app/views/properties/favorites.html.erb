@@ -16,7 +16,9 @@
         <%= render "property", property: property %>
       <% end %>
     </div>
-    <%= paginate @properties %>
+    <div class="app-pagination">
+      <%= paginate @properties %>
+    </div>
   <% else %>
     <div class="app-surface rounded-2xl mt-8 p-8 text-center sm:p-12">
       <div class="mx-auto grid size-14 place-items-center rounded-2xl bg-blue-50 text-2xl text-blue-600">♡</div>

@@ -35,7 +35,9 @@
         <% end %>
       </div>
 
-      <%= paginate @properties %>
+      <div class="app-pagination">
+        <%= paginate @properties %>
+      </div>
 
       <div class="app-surface rounded-2xl p-6 text-center mt-4" data-search-target="empty" hidden>
         <p class="app-muted text-lg">

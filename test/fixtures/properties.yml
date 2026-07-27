@@ -4,8 +4,10 @@ one:
   title: MyString
   price: 1
   location: MyString
+  user: one
 
 two:
   title: MyString
   price: 1
   location: MyString
+  user: two

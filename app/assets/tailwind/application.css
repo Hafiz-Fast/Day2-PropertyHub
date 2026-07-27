@@ -130,6 +130,82 @@ html[data-theme="dark"] .app-error { background: rgba(127, 29, 29, 0.28); color:
 	border-top: 1px solid var(--app-border);
 }
 
+.app-pagination {
+	display: flex;
+	justify-content: center;
+	margin-top: 2rem;
+}
+
+.app-pagination .pagination {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	max-width: 100%;
+	padding: 0.45rem;
+	border: 1px solid var(--app-border);
+	border-radius: 9999px;
+	background: var(--app-surface);
+	box-shadow: var(--app-shadow);
+	backdrop-filter: blur(10px);
+}
+
+.app-pagination .pagination > span {
+	display: inline-flex;
+}
+
+.app-pagination .pagination a,
+.app-pagination .pagination .current {
+	display: inline-grid;
+	place-items: center;
+	min-width: 2.35rem;
+	height: 2.35rem;
+	padding: 0 0.65rem;
+	border-radius: 9999px;
+	font-size: 0.875rem;
+	font-weight: 700;
+	transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.app-pagination .pagination a {
+	color: var(--app-muted);
+}
+
+.app-pagination .pagination a:hover {
+	background: rgba(37, 99, 235, 0.12);
+	color: var(--app-accent);
+	transform: translateY(-1px);
+}
+
+.app-pagination .pagination .current {
+	background: var(--app-accent);
+	color: white;
+	box-shadow: 0 6px 14px rgba(37, 99, 235, 0.25);
+}
+
+.app-pagination .pagination .disabled {
+	color: var(--app-muted);
+	opacity: 0.45;
+}
+
+@media (max-width: 480px) {
+	.app-pagination .pagination {
+	gap: 0.15rem;
+	padding: 0.35rem;
+	}
+
+	.app-pagination .pagination a,
+	.app-pagination .pagination .current {
+	min-width: 2.1rem;
+	height: 2.1rem;
+	padding: 0 0.45rem;
+	}
+
+	.app-pagination .pagination .first,
+	.app-pagination .pagination .last {
+		display: none;
+	}
+}
+
 .app-footer {
 	border-top: 1px solid var(--app-border);
 }

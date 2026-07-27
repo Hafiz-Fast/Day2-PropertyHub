@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  devise_for :users
   root "properties#index"
 
-  resources :users
+  # Account creation, login, password updates, and account deletion are
+  # handled by Devise. Community profiles remain read-only here.
+  resources :users, only: %i[index show]
 
   resources :properties do
     # member route applies to a single record

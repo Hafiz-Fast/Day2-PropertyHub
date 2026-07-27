@@ -1,0 +1,10 @@
+<% if resource.errors.any? %>
+  <div class="app-error mb-6" role="alert">
+    <p class="font-semibold"><%= pluralize(resource.errors.count, "error") %> prevented this account action:</p>
+    <ul class="mt-2 list-disc pl-5">
+      <% resource.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

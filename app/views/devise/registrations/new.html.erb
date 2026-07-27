@@ -1,0 +1,45 @@
+<% content_for :title, "Create account" %>
+
+<div class="max-w-md mx-auto py-12">
+  <div class="app-surface app-card sm:p-8">
+    <p class="app-eyebrow mb-2">Welcome</p>
+    <h1 class="text-3xl font-bold mb-2">Create account</h1>
+    <p class="app-muted mb-6">Join the PropertyHub community.</p>
+
+    <%= form_with model: resource, as: resource_name, url: registration_path(resource_name) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="mb-4">
+        <%= f.label :name, class: "app-label" %>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "app-input" %>
+      </div>
+
+      <div class="mb-4">
+        <%= f.label :age, class: "app-label" %>
+        <%= f.number_field :age, min: 0, autocomplete: "bday", class: "app-input" %>
+      </div>
+
+      <div class="mb-4">
+        <%= f.label :email, class: "app-label" %>
+        <%= f.email_field :email, autocomplete: "email", class: "app-input" %>
+      </div>
+
+      <div class="mb-4">
+        <%= f.label :password, class: "app-label" %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "app-input" %>
+        <% if @minimum_password_length %>
+          <p class="app-muted mt-1 text-sm"><%= @minimum_password_length %> characters minimum</p>
+        <% end %>
+      </div>
+
+      <div class="mb-6">
+        <%= f.label :password_confirmation, class: "app-label" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "app-input" %>
+      </div>
+
+      <%= f.submit "Create account", class: "app-button app-button-primary cursor-pointer" %>
+    <% end %>
+
+    <p class="app-muted mt-6 text-sm">Already have an account? <%= link_to "Log in", new_user_session_path, class: "app-link font-semibold" %>.</p>
+  </div>
+</div>
